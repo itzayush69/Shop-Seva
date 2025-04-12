@@ -25,17 +25,8 @@ export function LoginForm() {
     
     const user = await login(email, password); // login should return the user object
     
-    setIsLoading(false);
-    // for now dummy data
-    const dbUser = {
-      id: '1',
-      name: email.split('@')[0],
-      email: email,
-      type: "shopkeeper", // or "customer"
-    };
-    
-    if (user) {
-      if (dbUser.type === 'customer') {
+    if (user.success) {
+      if (user.role === 'customer') {
         navigate('/customer');
       } else {
         navigate('/dashboard');
