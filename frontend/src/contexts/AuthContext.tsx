@@ -12,7 +12,7 @@ interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<boolean>;
-  signup: (name: string, email: string, password: string, role: "USER" | "SELLER") => Promise<boolean>;
+  signup: (name: string, email: string, password: string, role: "customer" | "shopkeeper") => Promise<boolean>;
   logout: () => void;
 }
 
@@ -59,14 +59,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Updated signup function that makes an API call to /auth/signup.
-  const signup = async (name: string, email: string, password: string, role: "USER" | "SELLER") => {
+  const signup = async (name: string, email: string, password: string, role: "customer" | "shopkeeper") => {
     try {
       // Construct the payload.
       const payload = {
         name,
         email,
         password,
-        role  // or 'SELLER' depending on your implementation; here using 'USER' by default.
+        role: role === "customer" ? "USER" : "SELLER",
       };
       // Make POST request to the backend.
       const response = await axios.post(
