@@ -94,8 +94,8 @@ cd Shop-Seva
 
 ```bash
 cd frontend
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 > Starts the Vite dev server on `http://localhost:5173`
@@ -106,8 +106,8 @@ npm run dev
 
 ```bash
 cd ../backend
-npm install
-npm run start:dev
+pnpm install
+pnpm run start:dev
 ```
 
 > Starts the NestJS backend server on `http://localhost:3000`
@@ -122,7 +122,7 @@ Prisma is used as the ORM for type-safe database interactions.
 
 ```bash
 cd backend
-npm install prisma --save-dev
+pnpm install prisma --save-dev
 npx prisma init
 ```
 
@@ -178,14 +178,14 @@ JWT_SECRET=yourSecretKey
 
 ```bash
 cd frontend
-npm run build
+pnpm build
 ```
 
 ### Backend
 
 ```bash
 cd backend
-npm run build
+pnpm build
 ```
 
 ---
