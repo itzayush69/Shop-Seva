@@ -48,6 +48,9 @@ const translations: Translations = {
     reason2: "Easy Setup",
     reason3: "Multi-language Support",
     startSelling: "Start Selling Today",
+    regionalReachDesc: "Easily connect with local buyers and sellers in your city or neighborhood.",
+    fastSetupDesc: "Set up your shop in minutes with our user-friendly interface.",
+    supportsRegionalLanguagesDesc: "We support multiple languages to cater to your needs.",
   },
   hi: {
     welcome: "ShopSeva में आपका स्वागत है",
@@ -85,6 +88,9 @@ const translations: Translations = {
     reason2: "आसान सेटअप",
     reason3: "बहुभाषी समर्थन",
     startSelling: "आज ही बेचना शुरू करें",
+    regionalReachDesc: "अपने शहर या पड़ोस में स्थानीय खरीदारों और विक्रेताओं के साथ आसानी से जुड़ें।",
+    fastSetupDesc: "हमारे उपयोगकर्ता-अनुकूल इंटरफेस के साथ मिनटों में अपनी दुकान सेट करें।",
+    supportsRegionalLanguagesDesc: "हम आपकी आवश्यकताओं को पूरा करने के लिए कई भाषाओं का समर्थन करते हैं।",
   },
   bho: {
     welcome: "ShopSeva में स्वागत बा",
@@ -122,6 +128,9 @@ const translations: Translations = {
     reason2: "आसान सेटअप",
     reason3: "बहु-भाषा समर्थन",
     startSelling: "आज ही बेचना शुरू करीं",
+    regionalReachDesc: "अपने शहर या मोहल्ला में स्थानीय खरीदार आ विक्रेता से आसानी से जुड़ जाईं।",
+    fastSetupDesc: "हमार उपयोगकर्ता-अनुकूल इंटरफेस के साथ मिनट में अपना दुकान सेट करीं।",
+    supportsRegionalLanguagesDesc: "हम रउआ जरूरत के पूरा करे खातिर कई भाषा के समर्थन करीं।",
   },
   ne: {
     welcome: "ShopSeva मा स्वागत छ",
@@ -159,6 +168,9 @@ const translations: Translations = {
     reason2: "सस्तो सेटअप",
     reason3: "बहुभाषिक समर्थन",
     startSelling: "आजै बेचना सुरु गर्नुहोस्",
+    regionalReachDesc: "आफ्नो शहर वा छिमेकमा स्थानीय किन्ने र बेच्ने व्यक्तिहरूसँग सजिलै जडान गर्नुहोस्।",
+    fastSetupDesc: "हाम्रो प्रयोगकर्ता-मैत्री इन्टरफेसको साथमा मिनेटहरूमा आफ्नो पसल सेट गर्नुहोस्।",
+    supportsRegionalLanguagesDesc: "हामी तपाईंको आवश्यकताहरू पूरा गर्नका लागि धेरै भाषाहरूको समर्थन गर्छौं।",
   }
 };
 

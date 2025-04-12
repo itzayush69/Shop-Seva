@@ -21,6 +21,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import CreateShop from "./pages/CreateShop";
 import NotFound from "./pages/NotFound";
+import ManageProducts from "./pages/ManageProducts";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/create-shop" element={<CreateShop />} />
                       <Route path="*" element={<NotFound />} />
+                      <Route path="/shops/:shopId/manage-products" element={<ManageProducts />} />
                     </Routes>
                   </main>
                 </div>

@@ -128,7 +128,7 @@ const mockProducts: Product[] = [
     name: 'Patanjali Dant Kanti Toothpaste - 100g',
     description: 'Herbal toothpaste with the power of neem and other natural ingredients for healthy teeth.',
     price: 45,
-    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1500-1500,pr-true,f-auto,q-80/cms/product_variant/29f69b13-6b85-41a9-9de4-279ab0d2b01f.jpeg',
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1500-1500,pr-true,f-auto,q-80/inventory/product/e9fdb2a5-b028-4601-92f5-9ff030608b00-2385.jpg',
     shopId: 'shop1',
     category: 'Personal Care'
   }

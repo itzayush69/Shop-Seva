@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
   const { shops } = useShop();
 
   // Get featured products (first 4)
-  const featuredProducts = shops.flatMap(shop => shop.products).slice(0, 4);
+  const featuredProducts = shops.flatMap(shop => shop.products).slice(0, 10);
 
   return (
     <div className="flex flex-col">
@@ -44,7 +44,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason1')}</h3>
               <p className="text-muted-foreground">
-              Easily connect with local buyers and sellers in your city or neighborhood.
+                {t('regionalReachDesc')}
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
@@ -53,7 +53,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason2')}</h3>
               <p className="text-muted-foreground">
-                Create your shop in minutes with our easy-to-use platform.
+                {t('fastSetupDesc')}
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
@@ -62,12 +62,13 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason3')}</h3>
               <p className="text-muted-foreground">
-                Automatically translate your shop into multiple languages.
+                {t('supportsRegionalLanguagesDesc')}
               </p>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Featured Products Section */}
       {featuredProducts.length > 0 && (

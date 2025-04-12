@@ -29,7 +29,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="container mx-auto p-4 py-8 animate-fade-in">
       <h1 className="text-3xl font-bold mb-8">{t('dashboard')}</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <Card>
           <CardHeader className="pb-2">
@@ -38,13 +38,13 @@ const Dashboard: React.FC = () => {
           <CardContent>
             <div className="text-3xl font-bold">{userShops.length}</div>
             <p className="text-muted-foreground mt-2">
-              {userShops.length === 0 
-                ? "You haven't created any shops yet" 
+              {userShops.length === 0
+                ? "You haven't created any shops yet"
                 : `You have ${userShops.length} ${userShops.length === 1 ? 'shop' : 'shops'}`}
             </p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-lg">{t('products')}</CardTitle>
@@ -54,13 +54,13 @@ const Dashboard: React.FC = () => {
               {activeShop ? activeShop.products.length : 0}
             </div>
             <p className="text-muted-foreground mt-2">
-              {!activeShop 
-                ? "Select a shop to see products" 
+              {!activeShop
+                ? "Select a shop to see products"
                 : `Products in ${activeShop.name}`}
             </p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-lg">Active Shop</CardTitle>
@@ -69,8 +69,8 @@ const Dashboard: React.FC = () => {
             {activeShop ? (
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full overflow-hidden">
-                  <img 
-                    src={activeShop.logo} 
+                  <img
+                    src={activeShop.logo}
                     alt={activeShop.name}
                     className="w-full h-full object-cover"
                   />
@@ -90,7 +90,7 @@ const Dashboard: React.FC = () => {
           </CardContent>
         </Card>
       </div>
-      
+
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">{t('myShops')}</h2>
         <Button asChild>
@@ -100,7 +100,7 @@ const Dashboard: React.FC = () => {
           </Link>
         </Button>
       </div>
-      
+
       {userShops.length === 0 ? (
         <Card className="p-8 text-center">
           <Store className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
@@ -118,8 +118,8 @@ const Dashboard: React.FC = () => {
             <Card key={shop.id} className="overflow-hidden">
               <div className="aspect-video relative">
                 <div className="absolute inset-0 flex items-center justify-center bg-primary/5">
-                  <img 
-                    src={shop.logo} 
+                  <img
+                    src={shop.logo}
                     alt={shop.name}
                     className="w-20 h-20 rounded-full object-cover border-4 border-background"
                   />
@@ -133,15 +133,16 @@ const Dashboard: React.FC = () => {
                     <span className="font-medium">{shop.products.length}</span> products
                   </div>
                   <Button asChild variant="secondary" size="sm">
-                    <Link to={`/shops/${shop.id}`}>Manage</Link>
+                    <Link to={`/shops/${shop.id}/manage-products`}>Manage</Link>
                   </Button>
+
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
       )}
-      
+
       {activeShop && activeShop.products.length > 0 && (
         <>
           <div className="flex justify-between items-center mb-6">
@@ -156,7 +157,7 @@ const Dashboard: React.FC = () => {
           <ProductGrid products={activeShop.products} />
         </>
       )}
-      
+
       {activeShop && activeShop.products.length === 0 && (
         <Card className="p-8 text-center">
           <Package className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
