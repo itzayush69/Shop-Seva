@@ -23,7 +23,7 @@ export function LoginForm() {
     e.preventDefault();
     setIsLoading(true);
     
-    const user = await login(email, password); // login should return the user object
+    const user = await login(email, password);
     
     if (user.success) {
       if (user.role === 'customer') {
@@ -31,6 +31,10 @@ export function LoginForm() {
       } else {
         navigate('/dashboard');
       }
+    } else{
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
     }
   };
 
