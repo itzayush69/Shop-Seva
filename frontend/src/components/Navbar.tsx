@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -12,9 +13,10 @@ import {
   DropdownMenuSeparator, 
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
-import { ShoppingBag, User, Menu, MapPin } from 'lucide-react';
+import { ShoppingBag, User, Menu, MapPin, Search } from 'lucide-react';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { useShop } from '@/contexts/ShopContext';
+import { Input } from '@/components/ui/input'; // Import your Input component if you have one
 
 export function Navbar() {
   const { t } = useLanguage();
@@ -24,6 +26,7 @@ export function Navbar() {
   const [location, setLocation] = React.useState<string>('Enter Location');
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [newLocation, setNewLocation] = React.useState('');
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   const handleUseCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -44,6 +47,9 @@ export function Navbar() {
     setIsDialogOpen(false);
   };
 
+  // Assuming your AuthContext gives you a role or type of user
+  const isCustomer = true; // <- adjust according to your user model
+
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-background/80 border-b border-border">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
@@ -58,7 +64,8 @@ export function Navbar() {
           <Link to="/" className="text-foreground/80 hover:text-foreground transition">
             {t('')}
           </Link>
-          {isAuthenticated && (
+
+          {isAuthenticated && !isCustomer && (
             <>
               <Link to="/dashboard" className="text-foreground/80 hover:text-foreground transition">
                 {t('dashboard')}
@@ -70,6 +77,20 @@ export function Navbar() {
                 {t('products')}
               </Link>
             </>
+          )}
+
+          {/* If customer, show search bar */}
+          {isAuthenticated && isCustomer && (
+            <div className="relative w-64">
+              <Search className="absolute top-2.5 left-3 h-4 w-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 rounded-md bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
+              />
+            </div>
           )}
         </nav>
 
@@ -144,16 +165,6 @@ export function Navbar() {
                 )}
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link to="/dashboard" className="w-full cursor-pointer">
-                    {t('dashboard')}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/shops" className="w-full cursor-pointer">
-                    {t('myShops')}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
                   <Link to="/settings" className="w-full cursor-pointer">
                     {t('settings')}
                   </Link>
@@ -183,9 +194,7 @@ export function Navbar() {
         <div className="md:hidden border-t border-border">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
 
-            {/* Remove Welcome text on mobile */}
-
-            {isAuthenticated && (
+            {isAuthenticated && !isCustomer && (
               <>
                 <Link 
                   to="/dashboard" 
@@ -209,6 +218,20 @@ export function Navbar() {
                   {t('products')}
                 </Link>
               </>
+            )}
+
+            {/* If customer on mobile, show search */}
+            {isAuthenticated && isCustomer && (
+              <div className="relative w-full px-4">
+                <Search className="absolute top-3 left-5 h-4 w-4 text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 rounded-md bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
+                />
+              </div>
             )}
 
             <div className="px-4 py-2">

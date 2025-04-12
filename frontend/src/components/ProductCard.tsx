@@ -26,7 +26,7 @@ export function ProductCard({ product }: ProductCardProps) {
       <CardContent className="p-4">
         <h3 className="font-medium text-lg truncate">{product.name}</h3>
         <p className="text-sm text-muted-foreground truncate">{product.category}</p>
-        <p className="font-semibold mt-2">₹ {product.price.toFixed(2)}</p>
+        <p className="font-semibold mt-2">${product.price.toFixed(2)}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0 flex justify-between">
         <Button asChild variant="outline" size="sm">
