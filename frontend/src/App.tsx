@@ -20,6 +20,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Customer from "./pages/Customer";
+import ShopDetails from './pages/ShopDetail';
 import CreateShop from "./pages/CreateShop";
 import NotFound from "./pages/NotFound";
 import ManageProducts from "./pages/ManageProducts";
@@ -45,6 +46,7 @@ const App = () => (
                       <Route path="/signup" element={<Signup />} />
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/customer" element={<Customer />} />
+                      <Route path="/shops/:shopId" element={<ShopDetails />} />
                       <Route path="/create-shop" element={<CreateShop />} />
                       <Route path="*" element={<NotFound />} />
                       <Route path="/shops/:shopId/manage-products" element={<ManageProducts />} />
