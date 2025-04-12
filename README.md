@@ -17,7 +17,7 @@ A fullstack web application to support local shopkeepers and vendors — built w
 ### 🔧 Backend
 - [NestJS](https://nestjs.com/)
 - [SQLite](https://www.sqlite.org/)
-- [Drizzle ORM](https://orm.drizzle.team/)
+- [Prisma](https://www.prisma.io/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.org/)
 
@@ -28,7 +28,7 @@ A fullstack web application to support local shopkeepers and vendors — built w
 ```
 Shop-Seva/
 ├── frontend/     # Vite + React + Tailwind
-└── Backend/      # NestJS + SQLite + Drizzle ORM
+└── Backend/      # NestJS + SQLite + Prisma
 ```
 
 ---
@@ -68,26 +68,13 @@ npm run start:dev
 
 ---
 
-## 🧩 Database (SQLite + Drizzle ORM)
+## 🧩 Database (SQLite + Prisma)
 
-Drizzle ORM is used with SQLite for lightweight relational data management.
+Prisma, a powerful ORM, is used for database management.
 
-### Drizzle CLI (if using)
-If you're using Drizzle CLI for migrations, install it globally:
+### Prisma CLI (if using)
+If you want to use Prisma CLI for database management, install it globally:
 
-```bash
-npm install -g drizzle-kit
-```
-
-Make sure to configure your `drizzle.config.ts` file properly.
-
-### Running Migrations
-
-```bash
-npx drizzle-kit push:sqlite
-```
-
----
 
 ## 📄 .env Configuration
 
