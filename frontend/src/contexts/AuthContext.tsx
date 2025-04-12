@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
   
   // Mock signup function for prototype
-  const signup = async (name: string, email: string, password: string) => {
+  const signup = async (name: string, email: string, password: string, ) => {
     try {
       // In a real app, this would be an API call
       if (name && email && password.length >= 6) {
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const newUser = {
           id: Math.random().toString(36).substring(2, 9),
           name: name,
-          email: email
+          email: email,
         };
         
         setUser(newUser);
