@@ -37,36 +37,33 @@ Shop-Seva/
 ```mermaid
 flowchart TD
   %% Frontend
-  A[User / Seller]
+  A[User or Seller]
   A --> B[Frontend: React + Vite + TailwindCSS]
-  B --> B1[API Layer: Fetch & Axios]
-  B1 -->|HTTP Request| C[Backend API: NestJS]
+  B --> B1[API Layer using Fetch or Axios]
+  B1 -->|HTTP Request| C[Backend API with NestJS]
 
   %% Auth system
-  C --> D1[Auth Module: JWT]
-  D1 --> D2[User/Seller Validation]
-  D1 -->|JWT Token| B1
+  C --> D1[Auth Module using JWT]
+  D1 --> D2[Validate User or Seller]
+  D1 -->|Return Token| B1
 
-  %% Prisma + DB
+  %% Business Logic and DB
   C --> E[Business Logic Services]
   E --> F[Prisma ORM]
-  F --> G[(SQLite Database)]
+  F --> G[SQLite Database]
 
-  %% Prisma Models
-  G1[User Table]
-  G2[Seller Table]
-  G3[Product Table (planned)]
-  G --> G1
-  G --> G2
-  G --> G3
+  %% Database Tables
+  G --> G1[User Table]
+  G --> G2[Seller Table]
+  G --> G3[Product Table]
 
-  %% Tooling / Dev Setup
+  %% Tooling
   subgraph Tooling
     T1[TypeScript]
-    T2[Prettier + ESLint]
-    T3[Git + GitHub]
-    T4[npm / pnpm]
-    T5[VS Code + Plugins]
+    T2[Prettier and ESLint]
+    T3[Git and GitHub]
+    T4[NPM or PNPM]
+    T5[VS Code]
   end
 
   B --> T1
@@ -78,26 +75,6 @@ flowchart TD
   T4 --> C
   T5 --> T1
   T5 --> T2
-
-  subgraph Frontend
-    B
-    B1
-  end
-
-  subgraph Backend
-    C
-    D1
-    D2
-    E
-    F
-  end
-
-  subgraph Database
-    G
-    G1
-    G2
-    G3
-  end
 ```
 
 ---
