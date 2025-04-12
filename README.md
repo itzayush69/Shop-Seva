@@ -98,6 +98,7 @@ flowchart TD
     G2
     G3
   end
+```
 ---
 
 ## 🚀 Getting Started
