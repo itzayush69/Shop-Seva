@@ -115,7 +115,7 @@ export function LoginForm() {
       id: '1',
       name: email.split('@')[0],
       email: email,
-      type: "customer"
+      type: "shopkeeper", // or "customer"
     };
     
     if (user) {

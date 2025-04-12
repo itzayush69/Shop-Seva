@@ -84,7 +84,13 @@ export default function ManageProducts() {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold">Manage Products for Shop #{shopId}</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Manage Products for Shop #{shopId}</h1>
+        <Button variant="default" size="sm">
+          + Add Product
+        </Button>
+      </div>
+
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {mockProducts.map((product) => (
