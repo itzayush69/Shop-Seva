@@ -1,7 +1,6 @@
-
 # 🛍️ Shop-Seva
 
-A fullstack web application to support local shopkeepers and vendors — built with a modern tech stack including **React (Vite + Tailwind CSS)** for the frontend and **NestJS + SQLite + Drizzle ORM** for the backend.
+A fullstack web application to support local shopkeepers and vendors — built with a modern tech stack including **React (Vite + Tailwind CSS)** for the frontend and **NestJS + SQLite + Prisma ORM** for the backend.
 
 ---
 
@@ -17,7 +16,7 @@ A fullstack web application to support local shopkeepers and vendors — built w
 ### 🔧 Backend
 - [NestJS](https://nestjs.com/)
 - [SQLite](https://www.sqlite.org/)
-- [Prisma](https://www.prisma.io/)
+- [Prisma ORM](https://www.prisma.io/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.org/)
 
@@ -28,7 +27,76 @@ A fullstack web application to support local shopkeepers and vendors — built w
 ```
 Shop-Seva/
 ├── frontend/     # Vite + React + Tailwind
-└── Backend/      # NestJS + SQLite + Prisma
+└── backend/      # NestJS + SQLite + Prisma
+```
+
+---
+
+## 🧩 Architecture Flow
+
+```mermaid
+flowchart TD
+  %% Frontend
+  A[🧑‍💻 User / Seller] --> B[🌐 Frontend: React + Vite + TailwindCSS]
+  B --> B1[🔁 API Layer (Fetch / Axios)]
+  B1 -->|HTTP Request| C[🌍 Backend API: NestJS]
+
+  %% Auth system
+  C --> D1[🔐 Auth Module (JWT)]
+  D1 --> D2[✅ User/Seller Validation]
+  D1 -->|JWT Token| B1
+
+  %% Prisma + DB
+  C --> E[🧠 Business Logic Services]
+  E --> F[📦 Prisma ORM]
+  F --> G[(🗄️ SQLite Database)]
+
+  %% Prisma Models
+  G1[👤 User Table]
+  G2[🏪 Seller Table]
+  G3[📦 Product Table (future)]
+  G --> G1
+  G --> G2
+  G --> G3
+
+  %% Tooling / Dev Setup
+  subgraph Tooling
+    T1[🛠️ TypeScript]
+    T2[🎨 Prettier + ESLint]
+    T3[🌿 Git + GitHub]
+    T4[📦 npm / pnpm]
+    T5[🔍 VS Code + Plugins]
+  end
+
+  B --> T1
+  C --> T1
+  C --> T2
+  T3 --> B
+  T3 --> C
+  T4 --> B
+  T4 --> C
+  T5 --> T1
+  T5 --> T2
+
+  subgraph Frontend [Frontend (Vite + React + Tailwind)]
+    B
+    B1
+  end
+
+  subgraph Backend [Backend (NestJS + Prisma)]
+    C
+    D1
+    D2
+    E
+    F
+  end
+
+  subgraph Database [Database (SQLite via Prisma)]
+    G
+    G1
+    G2
+    G3
+  end
 ```
 
 ---
@@ -59,7 +127,7 @@ npm run dev
 ### 3. Setup Backend
 
 ```bash
-cd ../Backend
+cd ../backend
 npm install
 npm run start:dev
 ```
@@ -70,21 +138,59 @@ npm run start:dev
 
 ## 🧩 Database (SQLite + Prisma)
 
-Prisma, a powerful ORM, is used for database management.
+Prisma is used as the ORM for type-safe database interactions.
 
-### Prisma CLI (if using)
-If you want to use Prisma CLI for database management, install it globally:
+### Initial Setup
 
+```bash
+cd backend
+npm install prisma --save-dev
+npx prisma init
+```
 
-## 📄 .env Configuration
+This creates a `/prisma/schema.prisma` file and a `.env` file.
+
+### Example `.env`
+
+```env
+DATABASE_URL="file:./dev.db"
+```
+
+### Generate & Apply Migrations
+
+```bash
+npx prisma migrate dev --name init
+```
+
+### Prisma Studio (Optional)
+
+To open a local DB GUI:
+
+```bash
+npx prisma studio
+```
+
+---
+
+## 📄 Environment Variables
 
 Create `.env` files in both `frontend/` and `backend/` folders if needed.
 
 Examples:
-- `/frontend/.env`
-- `/Backend/.env`
 
-You might define your SQLite DB path or API keys here.
+- `frontend/.env`
+- `backend/.env`
+
+Common values:
+
+```env
+# frontend/.env
+VITE_API_URL=http://localhost:3000
+
+# backend/.env
+DATABASE_URL="file:./dev.db"
+JWT_SECRET=yourSecretKey
+```
 
 ---
 
@@ -100,8 +206,14 @@ npm run build
 ### Backend
 
 ```bash
-cd Backend
+cd backend
 npm run build
 ```
+
+---
+
+## 🤝 Contribution
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ---
