@@ -32,86 +32,150 @@ interface ShopContextType {
 
 export const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
-// Mock data
 const mockProducts: Product[] = [
   {
     id: '1',
-    name: 'Eco-friendly Water Bottle',
-    description: 'Stainless steel, BPA-free water bottle that keeps your drinks cold for 24 hours.',
-    price: 24.99,
-    image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=500&auto=format&fit=crop',
+    name: 'Aashirvaad Atta - 10 kg',
+    description: 'Premium quality whole wheat flour for making soft and delicious rotis, parathas, and more.',
+    price: 555,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1500-1500,pr-true,f-auto,q-80/cms/product_variant/afa00338-bc65-474a-9094-54c8b35798c1.jpeg',
     shopId: 'shop1',
-    category: 'Home Goods'
+    category: 'Grocery'
   },
+
   {
     id: '2',
-    name: 'Handmade Ceramic Mug',
-    description: 'Artisan crafted ceramic mug, perfect for your morning coffee or tea.',
-    price: 18.50,
-    image: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=500&auto=format&fit=crop',
+    name: 'Maggi Instant Noodles - 70g',
+    description: 'Quick and tasty Maggi noodles for a fast snack or meal.',
+    price: 15,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1000-1000,pr-true,f-auto,q-80/cms/product_variant/bed4b8a8-fe00-4856-9e69-4313cada9334.jpeg',
     shopId: 'shop1',
-    category: 'Kitchen'
+    category: 'Snacks'
   },
+  
   {
     id: '3',
-    name: 'Organic Cotton T-Shirt',
-    description: 'Soft, breathable t-shirt made from 100% organic cotton.',
-    price: 29.99,
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500&auto=format&fit=crop',
-    shopId: 'shop2',
-    category: 'Apparel'
+    name: 'Home Matchsticks - 2 Box',
+    description: 'Reliable matchsticks for lighting up your stove or candles.',
+    price: 5,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1500-1500,pr-true,f-auto,q-80/inventory/product/ccff3d82-be05-4dd4-a536-eca367b838a8-2650.jpg',
+    shopId: 'shop1',
+    category: 'Household'
   },
+  
   {
     id: '4',
-    name: 'Natural Wood Cutting Board',
-    description: 'Handcrafted cutting board made from sustainable acacia wood.',
-    price: 34.99,
-    image: 'https://images.unsplash.com/photo-1541781550883-93594983a9b4?q=80&w=500&auto=format&fit=crop',
+    name: 'Parle-G Biscuit - 250g (Pack of 3)',
+    description: 'Classic Parle-G biscuits, perfect for tea time or a light snack.',
+    price: 20,
+    image: 'https://cdn.zeptonow.com/production/ik-seo/tr:w-1280,ar-1500-1500,pr-true,f-auto,q-80/inventory/product/b31f9cf6-6aef-44cf-9a16-7d61c7179d85-3381/Parle-G-Original-Gluco-Biscuits-250-g-Combo.jpg',
+    shopId: 'shop1',
+    category: 'Snacks'
+  },
+
+  {
+    id: '5',
+    name: 'Lays Potato Chips - 100g',
+    description: 'Crunchy, crispy, and delicious potato chips for your snack cravings.',
+    price: 30,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-655-993,pr-true,f-auto,q-80/cms/product_variant/f520f20b-60fe-48bf-830d-2aa5b98dc318.jpeg',
+    shopId: 'shop1',
+    category: 'Snacks'
+  },
+  
+  {
+    id: '6',
+    name: 'Tata Salt - 1 kg',
+    description: 'Pure, iodized salt for daily use in cooking.',
+    price: 20,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1200-1200,pr-true,f-auto,q-80/cms/product_variant/e5aa24aa-efba-40ac-9e81-930e26468036.jpeg',
+    shopId: 'shop1',
+    category: 'Grocery'
+  },
+  
+  {
+    id: '7',
+    name: 'Amul Butter - 200g',
+    description: 'Creamy, rich butter for a perfect taste in your recipes.',
+    price: 55,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1200-1200,pr-true,f-auto,q-80/cms/product_variant/238198ac-e000-47e7-a0e4-3b0c3b98cb34.jpeg',
+    shopId: 'shop1',
+    category: 'Dairy'
+  },
+  
+  {
+    id: '8',
+    name: 'Red Label Tea - 500g (Combo)',
+    description: 'A refreshing blend of tea leaves for a perfect cup of chai.',
+    price: 100,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1500-1500,pr-true,f-auto,q-80/cms/product_variant/946f3865-110e-45a7-814e-4fc7857d2ece.jpg',
+    shopId: 'shop2',
+    category: 'Beverages'
+  },
+  
+  {
+    id: '9',
+    name: 'Dove Soap - 100g',
+    description: 'Mild and moisturizing soap for soft, smooth skin.',
+    price: 35,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1000-1000,pr-true,f-auto,q-80/cms/product_variant/28024662-ff89-449b-9772-8370bf26b83c.jpg',
     shopId: 'shop3',
-    category: 'Kitchen'
+    category: 'Personal Care'
+  },
+  
+  {
+    id: '10',
+    name: 'Patanjali Dant Kanti Toothpaste - 100g',
+    description: 'Herbal toothpaste with the power of neem and other natural ingredients for healthy teeth.',
+    price: 45,
+    image: 'https://cdn.zeptonow.com/production/tr:w-400,ar-1500-1500,pr-true,f-auto,q-80/cms/product_variant/29f69b13-6b85-41a9-9de4-279ab0d2b01f.jpeg',
+    shopId: 'shop1',
+    category: 'Personal Care'
   }
 ];
+
 
 const mockShops: Shop[] = [
   {
     id: 'shop1',
-    name: 'EcoGoods',
-    description: 'Sustainable products for everyday life',
-    owner: '1', // matches user id
+    name: 'Bihar Supermart',
+    description: 'Your one-stop grocery destination for essentials, snacks, and daily needs.',
+    owner: '1',
     logo: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=200&auto=format&fit=crop',
-    products: mockProducts.filter(p => p.shopId === 'shop1')
+    products: mockProducts.filter(p => p.shopId === 'shop1'),
   },
   {
     id: 'shop2',
     name: 'Modern Apparel',
-    description: 'Contemporary clothing made with sustainable materials',
+    description: 'Trendy clothes at affordable prices for Patna youth.',
     owner: '2',
     logo: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=200&auto=format&fit=crop',
-    products: mockProducts.filter(p => p.shopId === 'shop2')
+    products: mockProducts.filter(p => p.shopId === 'shop2'),
   },
   {
     id: 'shop3',
     name: 'Kitchen Essentials',
-    description: 'Quality kitchenware for the home chef',
+    description: 'All your home & kitchen needs, just a lane away.',
     owner: '3',
     logo: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=200&auto=format&fit=crop',
-    products: mockProducts.filter(p => p.shopId === 'shop3')
+    products: mockProducts.filter(p => p.shopId === 'shop3'),
   }
 ];
+
 
 export const ShopProvider = ({ children }: { children: ReactNode }) => {
   const [shops, setShops] = useState<Shop[]>(mockShops);
   const [activeShop, setActiveShopState] = useState<Shop | null>(null);
   const { toast } = useToast();
-  
+
   // Get user from localStorage for mock functionality
-  const user = localStorage.getItem('user') 
-    ? JSON.parse(localStorage.getItem('user') || '{}') 
+  const user = localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user') || '{}')
     : null;
-    
+
   // Filter shops owned by the current user
   const userShops = shops.filter(shop => user && shop.owner === user.id);
-  
+
   // Set active shop by ID
   const setActiveShop = (shopId: string) => {
     const shop = shops.find(s => s.id === shopId) || null;
@@ -120,7 +184,7 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem('activeShop', JSON.stringify(shop));
     }
   };
-  
+
   // Create a new shop
   const createShop = (shopData: Omit<Shop, 'id' | 'products'>) => {
     if (!user) {
@@ -131,23 +195,23 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
       });
       return;
     }
-    
+
     const newShop: Shop = {
       id: `shop${shops.length + 1}`,
       ...shopData,
       products: []
     };
-    
+
     setShops([...shops, newShop]);
     setActiveShopState(newShop);
     localStorage.setItem('activeShop', JSON.stringify(newShop));
-    
+
     toast({
       title: "Shop created",
       description: `${newShop.name} has been created successfully!`,
     });
   };
-  
+
   // Add a product to the active shop
   const addProduct = (productData: Omit<Product, 'id'>) => {
     if (!activeShop) {
@@ -158,30 +222,30 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
       });
       return;
     }
-    
+
     const newProduct: Product = {
       id: `product${Math.random().toString(36).substring(2, 9)}`,
       ...productData
     };
-    
+
     const updatedShop = {
       ...activeShop,
       products: [...activeShop.products, newProduct]
     };
-    
-    setShops(shops.map(shop => 
+
+    setShops(shops.map(shop =>
       shop.id === activeShop.id ? updatedShop : shop
     ));
-    
+
     setActiveShopState(updatedShop);
     localStorage.setItem('activeShop', JSON.stringify(updatedShop));
-    
+
     toast({
       title: "Product added",
       description: `${newProduct.name} has been added to ${activeShop.name}`,
     });
   };
-  
+
   // Load active shop from localStorage on mount
   useEffect(() => {
     const storedShop = localStorage.getItem('activeShop');
@@ -193,15 +257,15 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
       }
     }
   }, []);
-  
+
   return (
-    <ShopContext.Provider value={{ 
-      shops, 
-      userShops, 
-      activeShop, 
-      createShop, 
-      setActiveShop, 
-      addProduct 
+    <ShopContext.Provider value={{
+      shops,
+      userShops,
+      activeShop,
+      createShop,
+      setActiveShop,
+      addProduct
     }}>
       {children}
     </ShopContext.Provider>
