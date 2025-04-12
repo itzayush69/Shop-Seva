@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -13,7 +12,8 @@ import {
   DropdownMenuSeparator, 
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
-import { ShoppingBag, User, Menu } from 'lucide-react';
+import { ShoppingBag, User, Menu, MapPin } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { useShop } from '@/contexts/ShopContext';
 
 export function Navbar() {
@@ -21,6 +21,28 @@ export function Navbar() {
   const { isAuthenticated, user, logout } = useAuth();
   const { activeShop } = useShop();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [location, setLocation] = React.useState<string>('Enter Location');
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [newLocation, setNewLocation] = React.useState('');
+
+  const handleUseCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setLocation(`Lat: ${latitude.toFixed(2)}, Lng: ${longitude.toFixed(2)}`);
+        setIsDialogOpen(false);
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
+  };
+
+  const handleSaveLocation = () => {
+    if (newLocation.trim() !== '') {
+      setLocation(newLocation);
+    }
+    setIsDialogOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-background/80 border-b border-border">
@@ -34,7 +56,7 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
           <Link to="/" className="text-foreground/80 hover:text-foreground transition">
-            {t('welcome')}
+            {t('')}
           </Link>
           {isAuthenticated && (
             <>
@@ -56,6 +78,39 @@ export function Navbar() {
           <div className="hidden md:flex">
             <LanguageSwitcher />
           </div>
+
+          {/* Location Button and Dialog */}
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button 
+                variant="outline" 
+                className="flex items-center gap-2 px-4 py-2 text-foreground border-border backdrop-blur-md bg-background/30"
+              >
+                <MapPin className="h-4 w-4" />
+                <span className="truncate max-w-[100px]">{location}</span>
+              </Button>
+            </DialogTrigger>
+
+            <DialogContent className="bg-background/30 backdrop-blur-md border border-border rounded-xl p-6 w-[90%] max-w-md glassmorphism text-foreground">
+              <h2 className="text-lg font-semibold mb-4">Update Location</h2>
+              <input 
+                type="text" 
+                placeholder="Type your location..." 
+                value={newLocation} 
+                onChange={(e) => setNewLocation(e.target.value)}
+                className="w-full p-2 rounded-md border border-border bg-background/50 text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              <div className="flex justify-end gap-2 mt-4">
+                <Button variant="outline" onClick={handleUseCurrentLocation}>
+                  Use Current Location
+                </Button>
+                <Button onClick={handleSaveLocation}>
+                  Save
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+
           <ThemeSwitcher />
 
           {/* Auth buttons */}
@@ -127,14 +182,9 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t border-border">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            <Link 
-              to="/" 
-              className="flex items-center gap-2 px-4 py-2 hover:bg-accent rounded-md"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('welcome')}
-            </Link>
-            
+
+            {/* Remove Welcome text on mobile */}
+
             {isAuthenticated && (
               <>
                 <Link 
@@ -160,11 +210,11 @@ export function Navbar() {
                 </Link>
               </>
             )}
-            
+
             <div className="px-4 py-2">
               <LanguageSwitcher />
             </div>
-            
+
             {!isAuthenticated && (
               <div className="flex flex-col gap-2 p-4">
                 <Button variant="outline" asChild onClick={() => setIsMobileMenuOpen(false)}>

@@ -1,7 +1,6 @@
-
 # 🛍️ Shop-Seva
 
-A fullstack web application to support local shopkeepers and vendors — built with a modern tech stack including **React (Vite + Tailwind CSS)** for the frontend and **NestJS + SQLite + Drizzle ORM** for the backend.
+A fullstack web application to support local shopkeepers and vendors — built with a modern tech stack including **React (Vite + Tailwind CSS)** for the frontend and **NestJS + SQLite + Prisma ORM** for the backend.
 
 ---
 
@@ -17,7 +16,7 @@ A fullstack web application to support local shopkeepers and vendors — built w
 ### 🔧 Backend
 - [NestJS](https://nestjs.com/)
 - [SQLite](https://www.sqlite.org/)
-- [Drizzle ORM](https://orm.drizzle.team/)
+- [Prisma ORM](https://www.prisma.io/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.org/)
 
@@ -28,7 +27,54 @@ A fullstack web application to support local shopkeepers and vendors — built w
 ```
 Shop-Seva/
 ├── frontend/     # Vite + React + Tailwind
-└── Backend/      # NestJS + SQLite + Drizzle ORM
+└── backend/      # NestJS + SQLite + Prisma
+```
+
+---
+
+## 🧩 Architecture Flow
+
+```mermaid
+flowchart TD
+  %% Frontend
+  A[User or Seller]
+  A --> B[Frontend: React + Vite + TailwindCSS]
+  B --> B1[API Layer using Fetch or Axios]
+  B1 -->|HTTP Request| C[Backend API with NestJS]
+
+  %% Auth system
+  C --> D1[Auth Module using JWT]
+  D1 --> D2[Validate User or Seller]
+  D1 -->|Return Token| B1
+
+  %% Business Logic and DB
+  C --> E[Business Logic Services]
+  E --> F[Prisma ORM]
+  F --> G[SQLite Database]
+
+  %% Database Tables
+  G --> G1[User Table]
+  G --> G2[Seller Table]
+  G --> G3[Product Table]
+
+  %% Tooling
+  subgraph Tooling
+    T1[TypeScript]
+    T2[Prettier and ESLint]
+    T3[Git and GitHub]
+    T4[NPM or PNPM]
+    T5[VS Code]
+  end
+
+  B --> T1
+  C --> T1
+  C --> T2
+  T3 --> B
+  T3 --> C
+  T4 --> B
+  T4 --> C
+  T5 --> T1
+  T5 --> T2
 ```
 
 ---
@@ -59,7 +105,7 @@ npm run dev
 ### 3. Setup Backend
 
 ```bash
-cd ../Backend
+cd ../backend
 npm install
 npm run start:dev
 ```
@@ -68,36 +114,61 @@ npm run start:dev
 
 ---
 
-## 🧩 Database (SQLite + Drizzle ORM)
+## 🧩 Database (SQLite + Prisma)
 
-Drizzle ORM is used with SQLite for lightweight relational data management.
+Prisma is used as the ORM for type-safe database interactions.
 
-### Drizzle CLI (if using)
-If you're using Drizzle CLI for migrations, install it globally:
+### Initial Setup
 
 ```bash
-npm install -g drizzle-kit
+cd backend
+npm install prisma --save-dev
+npx prisma init
 ```
 
-Make sure to configure your `drizzle.config.ts` file properly.
+This creates a `/prisma/schema.prisma` file and a `.env` file.
 
-### Running Migrations
+### Example `.env`
+
+```env
+DATABASE_URL="file:./dev.db"
+```
+
+### Generate & Apply Migrations
 
 ```bash
-npx drizzle-kit push:sqlite
+npx prisma migrate dev --name init
+```
+
+### Prisma Studio (Optional)
+
+To open a local DB GUI:
+
+```bash
+npx prisma studio
 ```
 
 ---
 
-## 📄 .env Configuration
+## 📄 Environment Variables
 
 Create `.env` files in both `frontend/` and `backend/` folders if needed.
 
 Examples:
-- `/frontend/.env`
-- `/Backend/.env`
 
-You might define your SQLite DB path or API keys here.
+- `frontend/.env`
+- `backend/.env`
+
+Common values:
+
+```env
+# frontend/.env
+VITE_API_URL=http://localhost:3000
+
+# backend/.env
+DATABASE_URL="file:./dev.db"
+JWT_SECRET=yourSecretKey
+```
 
 ---
 
@@ -113,8 +184,14 @@ npm run build
 ### Backend
 
 ```bash
-cd Backend
+cd backend
 npm run build
 ```
+
+---
+
+## 🤝 Contribution
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ---
