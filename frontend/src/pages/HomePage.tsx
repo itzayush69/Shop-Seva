@@ -10,15 +10,15 @@ import { ShoppingBag, Globe, Languages, Settings } from 'lucide-react';
 const HomePage: React.FC = () => {
   const { t } = useLanguage();
   const { shops } = useShop();
-  
+
   // Get featured products (first 4)
-  const featuredProducts = shops.flatMap(shop => shop.products).slice(0, 4);
+  const featuredProducts = shops.flatMap(shop => shop.products).slice(0, 10);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 to-secondary/30">
-        <div className="container mx-auto text-center max-w-3xl animate-fade-in">
+      <section className="min-h-screen px-4 bg-gradient-to-br from-primary/10 to-secondary/30 flex justify-center">
+        <div className="text-center max-w-3xl animate-fade-in flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('welcome')}</h1>
           <p className="text-xl mb-8">{t('tagline')}</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -32,6 +32,7 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
+
       {/* Features Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
@@ -43,7 +44,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason1')}</h3>
               <p className="text-muted-foreground">
-                Reach customers around the world with multilingual shop pages.
+                {t('regionalReachDesc')}
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
@@ -52,7 +53,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason2')}</h3>
               <p className="text-muted-foreground">
-                Create your shop in minutes with our easy-to-use platform.
+                {t('fastSetupDesc')}
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
@@ -61,14 +62,15 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason3')}</h3>
               <p className="text-muted-foreground">
-                Automatically translate your shop into multiple languages.
+                {t('supportsRegionalLanguagesDesc')}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Products Section */}
+
+      {/* Featured Products Section
       {featuredProducts.length > 0 && (
         <section className="py-16 px-4 bg-secondary/20">
           <div className="container mx-auto">
@@ -81,9 +83,9 @@ const HomePage: React.FC = () => {
             <ProductGrid products={featuredProducts} />
           </div>
         </section>
-      )}
+      )} */}
 
-      {/* Call to Action */}
+      {/* Call to Action
       <section className="py-20 px-4 bg-primary/10">
         <div className="container mx-auto text-center max-w-2xl">
           <ShoppingBag className="h-12 w-12 text-primary mx-auto mb-6" />
@@ -93,6 +95,10 @@ const HomePage: React.FC = () => {
             <Link to="/signup">{t('getStarted')}</Link>
           </Button>
         </div>
+      </section> */}
+
+      <section>
+        
       </section>
     </div>
   );
