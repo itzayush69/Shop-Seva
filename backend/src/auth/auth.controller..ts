@@ -29,7 +29,6 @@ export class AuthController {
       name: body.name,
       email: body.email,
       password: body.password,
-      shopName: body.shopName,
       role: 'SELLER',
     });
   }
