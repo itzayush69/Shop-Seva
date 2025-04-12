@@ -12,3 +12,8 @@ export class SignupUserDto {
   password: string;
   role: 'USER';
 }
+
+export class SigninDto {
+  email: string;
+  password: string;
+}
