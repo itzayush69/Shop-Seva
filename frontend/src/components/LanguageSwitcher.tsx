@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLanguage, Language } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -6,9 +7,9 @@ import { Globe } from 'lucide-react';
 
 const languageNames: Record<Language, string> = {
   en: 'English',
-  hi: 'हिन्दी', // Hindi
-  bho: 'भोजपुरी', // Bhojpuri
-  ne: 'नेपाली', // Nepali
+  es: 'Español',
+  fr: 'Français',
+  de: 'Deutsch',
 };
 
 export function LanguageSwitcher() {
@@ -24,16 +25,16 @@ export function LanguageSwitcher() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem onClick={() => setLanguage('en')}>
-          {languageNames['en']}
+          English
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLanguage('hi')}>
-          {languageNames['hi']}
+        <DropdownMenuItem onClick={() => setLanguage('es')}>
+          Español
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLanguage('bho')}>
-          {languageNames['bho']}
+        <DropdownMenuItem onClick={() => setLanguage('fr')}>
+          Français
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLanguage('ne')}>
-          {languageNames['ne']}
+        <DropdownMenuItem onClick={() => setLanguage('de')}>
+          Deutsch
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
