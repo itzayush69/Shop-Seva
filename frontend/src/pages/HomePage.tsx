@@ -10,15 +10,15 @@ import { ShoppingBag, Globe, Languages, Settings } from 'lucide-react';
 const HomePage: React.FC = () => {
   const { t } = useLanguage();
   const { shops } = useShop();
-
+  
   // Get featured products (first 4)
-  const featuredProducts = shops.flatMap(shop => shop.products).slice(0, 10);
+  const featuredProducts = shops.flatMap(shop => shop.products).slice(0, 4);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="min-h-screen px-4 bg-gradient-to-br from-primary/10 to-secondary/30 flex items-center justify-center">
-        <div className="text-center max-w-3xl animate-fade-in flex flex-col items-center">
+      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 to-secondary/30">
+        <div className="container mx-auto text-center max-w-3xl animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('welcome')}</h1>
           <p className="text-xl mb-8">{t('tagline')}</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -32,7 +32,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-
       {/* Features Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
@@ -44,7 +43,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason1')}</h3>
               <p className="text-muted-foreground">
-                {t('regionalReachDesc')}
+                Reach customers around the world with multilingual shop pages.
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
@@ -53,7 +52,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason2')}</h3>
               <p className="text-muted-foreground">
-                {t('fastSetupDesc')}
+                Create your shop in minutes with our easy-to-use platform.
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
@@ -62,13 +61,12 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{t('reason3')}</h3>
               <p className="text-muted-foreground">
-                {t('supportsRegionalLanguagesDesc')}
+                Automatically translate your shop into multiple languages.
               </p>
             </div>
           </div>
         </div>
       </section>
-
 
       {/* Featured Products Section */}
       {featuredProducts.length > 0 && (

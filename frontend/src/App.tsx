@@ -21,7 +21,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import CreateShop from "./pages/CreateShop";
 import NotFound from "./pages/NotFound";
-import ManageProducts from "./pages/ManageProducts";
+import Customer from "./pages/Customer";
 
 const queryClient = new QueryClient();
 
@@ -43,9 +43,9 @@ const App = () => (
                       <Route path="/login" element={<Login />} />
                       <Route path="/signup" element={<Signup />} />
                       <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/customer" element={<Customer />} />
                       <Route path="/create-shop" element={<CreateShop />} />
                       <Route path="*" element={<NotFound />} />
-                      <Route path="/shops/:shopId/manage-products" element={<ManageProducts />} />
                     </Routes>
                   </main>
                 </div>
