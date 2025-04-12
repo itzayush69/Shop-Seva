@@ -33,4 +33,12 @@ export class AuthController {
       role: 'SELLER',
     });
   }
+
+  @Post('signin')
+  signin(@Body() body: { email: string; password: string }) {
+    return this.authService.signin({
+      email: body.email,
+      password: body.password,
+    });
+  }
 }
