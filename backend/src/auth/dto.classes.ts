@@ -2,7 +2,6 @@ export class SignupSellerDto {
   name: string;
   email: string;
   password: string;
-  shopName: string;
   role: 'SELLER';
 }
 
