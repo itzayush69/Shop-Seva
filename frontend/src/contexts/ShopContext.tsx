@@ -141,15 +141,15 @@ const mockShops: Shop[] = [
     name: 'Bihar Supermart',
     description: 'Your one-stop grocery destination for essentials, snacks, and daily needs.',
     owner: '1',
-    logo: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=200&auto=format&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1739065882919-03c8ae1a3da3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bG9jYWwlMjBpbmRpYW4lMjBzaG9wfGVufDB8fDB8fHww',
     products: mockProducts.filter(p => p.shopId === 'shop1'),
   },
   {
     id: 'shop2',
-    name: 'Modern Apparel',
-    description: 'Trendy clothes at affordable prices for Patna youth.',
+    name: 'Modern Meats',
+    description: 'Fresh fish and chicken flesh.',
     owner: '2',
-    logo: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=200&auto=format&fit=crop',
+    logo: 'https://plus.unsplash.com/premium_photo-1664360227360-16628277f9f0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGxvY2FsJTIwaW5kaWFuJTIwc2hvcHxlbnwwfHwwfHx8MA%3D%3D',
     products: mockProducts.filter(p => p.shopId === 'shop2'),
   },
   {
@@ -157,7 +157,7 @@ const mockShops: Shop[] = [
     name: 'Kitchen Essentials',
     description: 'All your home & kitchen needs, just a lane away.',
     owner: '3',
-    logo: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=200&auto=format&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1641048174454-5c48dc0baafc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bG9jYWwlMjBpbmRpYW4lMjBzaG9wJTIwa2l0Y2hlbnxlbnwwfHwwfHx8MA%3D%3D',
     products: mockProducts.filter(p => p.shopId === 'shop3'),
   }
 ];
