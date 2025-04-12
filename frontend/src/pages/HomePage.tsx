@@ -16,8 +16,8 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-center w-full">
-      <div className="bg-gray-950 justify-center items-center flex flex-col min-h-screen">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-white mt-2 mb-12">
+      <div className="justify-center items-center flex flex-col min-h-screen light:bg-white dark:bg-gray-900">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center mt-2 mb-12">
           {t('welcomeTo')} <span className="text-primary">ShopSeva</span>
         </h1>
 
@@ -28,8 +28,8 @@ const HomePage: React.FC = () => {
             {/* Seller Section */}
             <div className="flex justify-center">
               <div className="w-full max-w-md text-center bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-2xl flex flex-col items-center border border-white/10 min-h-[240px] min-w-[300px]">
-                <h2 className="text-3xl font-bold mb-4 text-white">{t('seller')}</h2>
-                <p className="text-lg mb-6 text-gray-300">{t('sellerDesc')}</p>
+                <h2 className="text-3xl font-bold mb-4">{t('seller')}</h2>
+                <p className="text-lg mb-6">{t('sellerDesc')}</p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button asChild size="lg">
                     <Link to="/login">{t('getStarted')}</Link>
@@ -44,8 +44,8 @@ const HomePage: React.FC = () => {
             {/* Buyer Section */}
             <div className="flex justify-center">
               <div className="w-full max-w-md text-center bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-2xl flex flex-col items-center border border-white/10 min-h-[240px] min-w-[300px]">
-                <h2 className="text-3xl font-bold mb-4 text-white">{t('buyer')}</h2>
-                <p className="text-lg mb-6 text-gray-300">{t('buyerDesc')}</p>
+                <h2 className="text-3xl font-bold mb-4 ">{t('buyer')}</h2>
+                <p className="text-lg mb-6">{t('buyerDesc')}</p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button asChild size="lg">
                     <Link to="/login">{t('getStarted')}</Link>
@@ -61,10 +61,7 @@ const HomePage: React.FC = () => {
         </section>
 
       </div>
-
-
-
-
+    
 
       {/* Features Section */}
       <section className="py-16 px-4">
@@ -129,39 +126,40 @@ const HomePage: React.FC = () => {
           </Button>
         </div>
       </section> */}
+   
 
-<footer className="bg-gray-950 text-white py-12 px-4 mt-20">
-  <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <footer className="py-12 px-4 mt-20 flex flex-col items-center light:bg-white dark:bg-gray-900">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    <div>
-      <h3 className="text-xl font-semibold mb-4">{t('aboutTitle')}</h3>
-      <p className="text-gray-400">
-        {t('aboutDescription')}
-      </p>
-    </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">{t('aboutTitle')}</h3>
+            <p className="">
+              {t('aboutDescription')}
+            </p>
+          </div>
 
-    <div>
-      <h3 className="text-xl font-semibold mb-4">{t('contactTitle')}</h3>
-      <p className="text-gray-400">{t('contactEmail')}</p>
-      <p className="text-gray-400">{t('contactPhone')}</p>
-      <p className="text-gray-400">{t('contactLocation')}</p>
-    </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">{t('contactTitle')}</h3>
+            <p className="">{t('contactEmail')}</p>
+            <p className="">{t('contactPhone')}</p>
+            <p className="">{t('contactLocation')}</p>
+          </div>
 
-    <div>
-      <h3 className="text-xl font-semibold mb-4">{t('quickLinksTitle')}</h3>
-      <ul className="space-y-2">
-        <li><Link to="/login" className="text-gray-300 hover:text-primary">{t('login')}</Link></li>
-        <li><Link to="/signup" className="text-gray-300 hover:text-primary">{t('signup')}</Link></li>
-        <li><Link to="/products" className="text-gray-300 hover:text-primary">{t('exploreProducts')}</Link></li>
-      </ul>
-    </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">{t('quickLinksTitle')}</h3>
+            <ul className="space-y-2">
+              <li><Link to="/login" className=" hover:text-primary">{t('login')}</Link></li>
+              <li><Link to="/signup" className=" hover:text-primary">{t('signup')}</Link></li>
+              <li><Link to="/products" className="hover:text-primary">{t('exploreProducts')}</Link></li>
+            </ul>
+          </div>
 
-  </div>
+        </div>
 
-  <div className="text-center text-sm text-gray-500 mt-12">
-    &copy; {new Date().getFullYear()} ShopSeva. {t('allRightsReserved')}
-  </div>
-</footer>
+        <div className="text-center text-sm text-gray-500 mt-12">
+          &copy; {new Date().getFullYear()} ShopSeva. {t('allRightsReserved')}
+        </div>
+      </footer>
 
 
     </div>
