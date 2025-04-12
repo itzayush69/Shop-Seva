@@ -80,6 +80,7 @@
 // };
 
 // export default Customer;
+
 import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -111,7 +112,7 @@ const Customer: React.FC = () => {
       
       {/* Welcome Title */}
       <h1 className="text-4xl font-bold text-center mb-8 font-serif">
-        <span className="font-extrabold">Welcome {name}!</span>
+        <span className="font-extrabold">Welcome {name}</span>
       </h1>
 
       {/* Featured Shops Title */}
@@ -146,7 +147,8 @@ const Customer: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-2">{shop.name}</h3>
                 <p className="text-muted-foreground mb-4 line-clamp-2">{shop.description}</p>
                 <Button asChild variant="secondary" size="sm" className="w-full">
-                  <Link to={`/shops/${shop.id}`}>{t('browseShop')}</Link>
+                <Link to={`/shops/${shop.id}`}>{t('browseShop')}</Link>
+
                 </Button>
               </CardContent>
             </Card>
