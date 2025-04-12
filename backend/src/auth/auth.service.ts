@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from 'src/database/prisma.service';
 import { SigninDto, SignupSellerDto, SignupUserDto } from './dto.classes';
+import { Seller, User } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -42,11 +43,19 @@ export class AuthService {
     const hashedPassword = await bcrypt.hash(dto.password, 10);
 
     if (dto.role === 'SELLER') {
-      const existingSeller = await this.prisma.seller.findUnique({
+      let existingSeller = await this.prisma.seller.findUnique({
         where: {
           email: dto.email,
         },
       });
+
+      if (!existingSeller) {
+        existingSeller = await this.prisma.user.findUnique({
+          where: {
+            email: dto.email,
+          },
+        });
+      }
 
       if (existingSeller) {
         return {
@@ -70,18 +79,26 @@ export class AuthService {
   }
 
   async signin(dto: SigninDto) {
-    let user = await this.prisma.user.findUnique({
+    let user: User | Seller | null = null;
+    let role: 'USER' | 'SELLER' | null = null;
+
+    user = await this.prisma.user.findUnique({
       where: {
         email: dto.email,
       },
     });
 
-    if (!user) {
+    if (user) {
+      role = 'USER';
+    } else {
       user = await this.prisma.seller.findUnique({
         where: {
           email: dto.email,
         },
       });
+      if (user) {
+        role = 'SELLER';
+      }
     }
 
     if (!user) {
@@ -100,7 +117,8 @@ export class AuthService {
 
     return {
       message: 'Signin successful',
-      userId: user.id,
+      name: user.name,
+      role: role,
     };
   }
 }
