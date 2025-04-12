@@ -39,11 +39,11 @@ flowchart TD
   %% Frontend
   A[User / Seller]
   A --> B[Frontend: React + Vite + TailwindCSS]
-  B --> B1[API Layer (Fetch / Axios)]
+  B --> B1[API Layer: Fetch & Axios]
   B1 -->|HTTP Request| C[Backend API: NestJS]
 
   %% Auth system
-  C --> D1[Auth Module (JWT)]
+  C --> D1[Auth Module: JWT]
   D1 --> D2[User/Seller Validation]
   D1 -->|JWT Token| B1
 
@@ -55,7 +55,7 @@ flowchart TD
   %% Prisma Models
   G1[User Table]
   G2[Seller Table]
-  G3[Product Table (future)]
+  G3[Product Table (planned)]
   G --> G1
   G --> G2
   G --> G3
@@ -79,12 +79,12 @@ flowchart TD
   T5 --> T1
   T5 --> T2
 
-  subgraph Frontend [Frontend]
+  subgraph Frontend
     B
     B1
   end
 
-  subgraph Backend [Backend]
+  subgraph Backend
     C
     D1
     D2
@@ -92,13 +92,14 @@ flowchart TD
     F
   end
 
-  subgraph Database [Database]
+  subgraph Database
     G
     G1
     G2
     G3
   end
 ```
+
 ---
 
 ## 🚀 Getting Started
