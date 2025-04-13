@@ -89,9 +89,35 @@ const ShopDetails = () => {
         </div>
       ) : showPaymentPage ? (
         // ... your payment page (no change)
-        <div className="max-w-2xl mx-auto border rounded-xl p-6 bg-white shadow-md">
-          {/* Payment Section */}
-          {/* no change */}
+        // <div className="max-w-2xl mx-auto border rounded-xl p-6 bg-white shadow-md">
+        //   {/* Payment Section */}
+        //   {/* no change */}
+        // </div>
+        <div className="max-w-2xl mx-auto border rounded-xl p-6 bg-white dark:bg-gray-800 shadow-md animate-fade-in">
+          <h2 className="text-2xl font-bold mb-6 text-center">🧾 Order Summary</h2>
+          <ul className="space-y-4 mb-6">
+            {cartItems.map(item => (
+              <li key={item.id} className="flex justify-between items-center border-b pb-2">
+                <div>
+                  <p className="font-semibold">{item.name}</p>
+                  <p className="text-sm text-muted-foreground">Quantity: {item.quantity}</p>
+                </div>
+                <div className="font-semibold">
+                  ₹{(parseFloat(item.price) * item.quantity).toFixed(2)}
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="text-right font-bold text-lg mb-8">
+            Total: ₹{getTotal().toFixed(2)}
+          </div>
+
+          <h3 className="text-xl font-semibold mb-4">Select Payment Method:</h3>
+          <div className="flex flex-col gap-4">
+            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white" onClick={() => handlePayment('upi')}>
+              Pay with UPI
+            </Button>
+          </div>
         </div>
       ) : (
         <>
