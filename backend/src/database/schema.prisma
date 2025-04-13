@@ -24,4 +24,25 @@ model Seller {
   email     String  @unique
   password  String
   createdAt DateTime @default(now())
+  shop      Shop?
+}
+
+model Shop {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  products    Product[]
+  seller      Seller?   @relation(fields: [sellerId], references: [id])
+  sellerId    Int?      @unique
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  stock       Int
+  createdAt   DateTime   @default(now())
+  shop        Shop?      @relation(fields: [shopId], references: [id])
+  shopId      Int?
 }
