@@ -5,7 +5,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useShop } from '@/contexts/ShopContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ProductGrid } from '@/components/ProductGrid';
 import { Store } from 'lucide-react';
 
 const Customer: React.FC = () => {
@@ -13,7 +12,8 @@ const Customer: React.FC = () => {
   const { t } = useLanguage();
   const { shops } = useShop();
   const navigate = useNavigate();
-  const name="Ayush";
+  const name = "Ayush";
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
@@ -26,7 +26,6 @@ const Customer: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4 py-8 animate-fade-in">
-      
       {/* Welcome Title */}
       <h1 className="text-4xl font-bold text-center mb-8 font-serif">
         <span className="font-extrabold">Welcome {name}</span>
@@ -64,8 +63,7 @@ const Customer: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-2">{shop.name}</h3>
                 <p className="text-muted-foreground mb-4 line-clamp-2">{shop.description}</p>
                 <Button asChild variant="secondary" size="sm" className="w-full">
-                <Link to={`/shops/${shop.id}`}>{t('browseShop')}</Link>
-
+                  <Link to={`/shops/${shop.id}`}>{t('browseShop')}</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -81,29 +79,31 @@ const Customer: React.FC = () => {
       </div>
 
       {/* Popular Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
         {/* Example Products (You should fetch real data) */}
-        {[
-          { id: 1, name: 'Smartphone', description: 'Latest model with advanced features.', image: '/images/product1.jpg' },
-          { id: 2, name: 'Laptop', description: 'Powerful laptop for work and gaming.', image: '/images/product2.jpg' },
-          { id: 3, name: 'Headphones', description: 'Noise-cancelling wireless headphones.', image: '/images/product3.jpg' },
+        {[ 
+          { id: 1, name: 'Fresh Apple', price: '₹100', description: 'Crisp and fresh apples, perfect for snacking.', image: '/images/apple.jpg' },
+          { id: 2, name: 'Organic Rice', price: '₹80', description: 'Premium organic rice, ideal for daily meals.', image: '/images/rice.jpg' },
+          { id: 3, name: 'Milk (1L)', price: '₹50', description: 'Fresh milk, packed with essential nutrients.', image: '/images/milk.jpg' },
+          { id: 4, name: 'Eggs (Pack of 6)', price: '₹60', description: 'Farm-fresh eggs, rich in protein.', image: '/images/eggs.jpg' },
         ].map(product => (
           <Card 
             key={product.id} 
             className="overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg"
           >
-            <div className="aspect-video relative">
+            <div className="aspect-w-1 aspect-h-1 relative">
               <img 
                 src={product.image} 
                 alt={product.name}
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-              <p className="text-muted-foreground mb-4 line-clamp-2">{product.description}</p>
+            <CardContent className="p-4">
+              <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
+              <p className="text-muted-foreground text-sm mb-2">{product.description}</p>
+              <p className="text-green-600 font-bold mb-4">{product.price}</p>
               <Button variant="secondary" size="sm" className="w-full">
-                {t('buyNow')}
+                {t('addToCart')}
               </Button>
             </CardContent>
           </Card>
