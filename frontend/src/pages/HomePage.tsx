@@ -99,35 +99,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-
-      {/* Featured Products Section
-      {featuredProducts.length > 0 && (
-        <section className="py-16 px-4 bg-secondary/20">
-          <div className="container mx-auto">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold">{t('featuredProducts')}</h2>
-              <Button variant="outline" asChild>
-                <Link to="/products">{t('viewAll')}</Link>
-              </Button>
-            </div>
-            <ProductGrid products={featuredProducts} />
-          </div>
-        </section>
-      )} */}
-
-      {/* Call to Action
-      <section className="py-20 px-4 bg-primary/10">
-        <div className="container mx-auto text-center max-w-2xl">
-          <ShoppingBag className="h-12 w-12 text-primary mx-auto mb-6" />
-          <h2 className="text-3xl font-bold mb-6">{t('startSelling')}</h2>
-          <p className="text-lg mb-8">{t('shopDescription')}</p>
-          <Button asChild size="lg">
-            <Link to="/signup">{t('getStarted')}</Link>
-          </Button>
-        </div>
-      </section> */}
-   
-
       <footer className="py-12 px-4 mt-20 flex flex-col items-center light:bg-white dark:bg-gray-900">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
 
