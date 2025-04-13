@@ -112,7 +112,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         payload
       );
       // if user already exists
-      if (response.data.message === "User already exists") {
+      console.log(response.data.message);
+      if (response.data.message === "User already exists" || response.data.message === "Seller already exists") {
         toast({
           variant: "destructive",
           title: "Signup failed",
