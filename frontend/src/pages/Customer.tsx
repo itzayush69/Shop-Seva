@@ -63,7 +63,7 @@ const Customer: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-2">{shop.name}</h3>
                 <p className="text-muted-foreground mb-4 line-clamp-2">{shop.description}</p>
                 <Button asChild variant="secondary" size="sm" className="w-full">
-                  <Link to={`/shops/${shop.id}`}>{t('browseShop')}</Link>
+                  <Link to={`/shops/${shop.id}`}>{t('Browse Shop')}</Link>
                 </Button>
               </CardContent>
             </Card>
