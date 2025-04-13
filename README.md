@@ -22,6 +22,21 @@ A fullstack web application to support local shopkeepers and vendors — built w
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Homepage
+![Homepage](./assets/1.png)
+
+### 🔍 Product Listing
+![Product Listing](./assets/2.png)
+
+### 🛒 Cart View
+![Cart View](./assets/3.png)
+
+### 🧾 Order Summary
+![Order Summary](./assets/4.png)
+
+---
 ## 🗂️ Folder Structure
 
 ```
